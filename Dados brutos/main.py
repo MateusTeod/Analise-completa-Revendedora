@@ -42,3 +42,14 @@ print(invalid_dates)
 # Remover os registros onde 'Sold Date' < 'Purchased Date'
 df = df[~((df['Sold Date'] < df['Purchased Date']) & (df['Sold Date'].notnull()) & (df['Purchased Date'].notnull()))]
 print(invalid_dates.shape[0])
+
+# Criando novas colunas 'Profit', 'Vehicle Age' e 'Sale Year'
+df['Profit'] = df['Sold Price-$'] - df['Purchased Price-$']
+df['Vehicle Age'] = df['Purchased Date'].dt.year - df['Manufactured Year']
+df['Sale Year'] = df['Sold Date'].dt.year
+
+# Verificar as primeiras linhas do DataFrame atualizado
+print(df.head())
+
+# exibindo as colunas do DataFrame
+print(df.columns.tolist())
