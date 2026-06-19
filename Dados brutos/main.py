@@ -45,7 +45,7 @@ df = df[~((df['Sold Date'] < df['Purchased Date']) & (df['Sold Date'].notnull())
 print(f"Registros removidos por inconsistência de datas: {invalid_dates.shape[0]}")
 
 # Criando novas colunas 'Profit', 'Vehicle Age' e 'Sale Year'
-df['Profit'] = df['Sold Price-$'] - df['Purchased Price-$']
+df['Profit'] =  df['Purchased Price-$'] - df['Sold Price-$'] 
 df['Vehicle Age'] = df['Purchased Date'].dt.year - df['Manufactured Year']
 df['Sale Year'] = df['Sold Date'].dt.year
 
